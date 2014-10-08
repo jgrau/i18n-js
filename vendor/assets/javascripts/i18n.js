@@ -208,6 +208,10 @@ I18n.translate = function(scope, options) {
       return this.interpolate(translation, options);
     }
   } catch(err) {
+    if (I18n.errorHandler) {
+      I18n.errorHandler(scope)
+    }
+
     return this.missingTranslation(scope);
   }
 };
